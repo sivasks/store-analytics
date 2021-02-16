@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: store-analytics
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: store-analytics
+    spec:
+      containers:
+        - name: store-analytics
+          image: registry.gitlab.com/sivasks/store-analytics
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: registry.gitlab.com
